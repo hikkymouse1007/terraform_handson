@@ -1,5 +1,8 @@
 # terraform_handson
 Udemy:https://www.udemy.com/course/learn-devops-infrastructure-automation-with-terraform
+
+### AWS provider
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs
 ## section8
 
 ```
@@ -70,3 +73,33 @@ terraform init
 ### Setup AWS Account for terraform
 - IAMからterraformユーザを作成
 - administraion-accessを許可したユーザグループに追加
+
+## Section10
+Linux2のAMIのIDの取得方法
+https://dev.classmethod.jp/articles/get-the-latest-amazon-linux-2-ami-id-with-cloudformation/
+https://dev.classmethod.jp/articles/launch-ec2-from-latest-amazon-linux2-ami-by-terraform/
+
+テンプレートのデバッグ
+https://www.terraform.io/docs/language/expressions/references.html
+https://future-architect.github.io/articles/20190819/
+
+最新のamiのidを取得する方法
+
+```
+data aws_ssm_parameter amzn2_ami {
+  name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+}
+
+
+resource "aws_instance" "example" {
+  ami = data.aws_ssm_parameter.amzn2_ami.value
+  instance_type = "t2.micro"
+}
+
+```
+
+## Variable Types
+- simple types
+  - String
+  - Number
+  - Bool
