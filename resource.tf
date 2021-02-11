@@ -2,7 +2,7 @@ provider "aws" {
     
 }
 
-variable "AWS_REGION" {
+variable "AWS_REGION" { // default_valueはterraform.tfvarsに環境変数として埋め込むことができる
       type = string
 }
 
