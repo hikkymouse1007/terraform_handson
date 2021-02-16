@@ -103,3 +103,18 @@ resource "aws_instance" "example" {
   - String
   - Number
   - Bool
+
+- complex type
+  - List
+    [0,1,5,2]
+  - Set
+    [5,1,1,2] => [1,2,5]
+  - Map
+    {"key" = "value"}
+  - Object
+    {
+      firstname = "John"
+      housenumber = 10
+    }
+  - Tuple
+  [0,"string",false]
